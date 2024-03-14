@@ -1,0 +1,8 @@
+SELECT
+  Sport,
+  Year,
+  AVG(Height) OVER (PARTITION BY Sport ORDER BY Year ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS AvgHeight,
+  AVG(Weight) OVER (PARTITION BY Sport ORDER BY Year ROWS BETWEEN 2 PRECEDING AND CURRENT ROW) AS AvgWeight
+FROM
+  athlete_events
+  Group BY Sport;
